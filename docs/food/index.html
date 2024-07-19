@@ -21,6 +21,8 @@ loadMarkdown("index.md", "readmeDiv", "_parent");
 
 <div style="float:left; padding-right:30px">
 <div id="test2"></div>
+
+<div id="test"></div>
 </div>
 
 <div style="overflow: auto;">
@@ -117,14 +119,19 @@ TO DO: Use the following json from loadDataFood() to display a <a href="https://
           const food_name = data.foods[0].description;
           console.log("Food : {}, Id : {}", food_name, id);
           link = `/feed/view/#path=https://api.nal.usda.gov/fdc/v1/food/${id}?api_key=bLecediTVa2sWd8AegmUZ9o7DxYFSYoef9B4i1Ml`;
-
+          $(document).ready(function() {
+                    console.log("test: call 1 to show")
+                    initializeNutritionLabel('bLecediTVa2sWd8AegmUZ9o7DxYFSYoef9B4i1Ml', id);
+                });
           // TO DO: This could be secondary. Stay in the current page to display the label.
-          window.location.href = link;
+          //window.location.href = link;
+          window.open(link, '_blank');
         } catch (error) {
           alert(error)
         }
     }
-    loadDataFood();
+    
+    
 </script>
 
 
@@ -142,10 +149,13 @@ TO DO: Use the following json from loadDataFood() to display a <a href="https://
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../../../nutrition-label/dist/js/nutritionLabel-min.js"></script>
+<script type="text/javascript" src="../food/api_to_path.js"></script>
+<script type="text/javascript" src="../food/json_to_label.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     eval( eval( $('#pre2').html() ) );
 });
+
 </script>
 
 </body>
